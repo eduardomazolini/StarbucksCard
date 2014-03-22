@@ -33,6 +33,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class HttpPostTask extends AsyncTask<URI, Integer, String> {
@@ -79,6 +80,8 @@ public class HttpPostTask extends AsyncTask<URI, Integer, String> {
 
 	protected void onPostExecute(String result) {
 		super.onPostExecute(result);
+		ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
+		progressBar.setVisibility(View.GONE);
 		if (result!=null){
 			try {
 				Integer saldoInicio = result.indexOf("fetch_balance_value")+"fetch_balance_value".length()+2;
@@ -145,6 +148,16 @@ public class HttpPostTask extends AsyncTask<URI, Integer, String> {
 	    }
 	    // Return full string
 	    return total.toString();
+	}
+
+
+	@Override
+	protected void onPreExecute() {
+		// TODO Auto-generated method stub
+		super.onPreExecute();
+		ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
+		progressBar.setVisibility(View.VISIBLE);
+		
 	}
    	
 }
