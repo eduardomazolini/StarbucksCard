@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+       <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+           android:id="@+id/Menu"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="8dip"
+           android:orientation="vertical" >
+
+           <TextView
+               android:id="@+id/labelcardNumber"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/cardNumber"
+               android:textAppearance="?android:attr/textAppearanceSmall" />
+
+           <EditText
+               android:id="@+id/cardNumber"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:inputType="number"
+               android:ems="10" >
+
+               <requestFocus />
+           </EditText>
+
+           <TextView
+               android:id="@+id/labelcardPin"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/cardPin"
+               android:textAppearance="?android:attr/textAppearanceSmall" />
+
+           <EditText
+               android:id="@+id/cardPin"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:ems="10"
+               android:inputType="numberPassword" />
+
+           <LinearLayout
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:gravity="center_horizontal"
+               android:orientation="vertical" >
+
+               <CheckBox
+                   android:id="@+id/save"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:onClick="onSaveClicked"
+                   android:text="@string/save" />
+
+               <Button
+                   android:id="@+id/submit"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:onClick="onSubmitClicked"
+                   android:text="@string/submit" />
+
+               <TextView
+                   android:id="@+id/saldo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="?android:attr/textAppearanceLarge" />
+
+               <TextView
+                   android:id="@+id/saldoData"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="?android:attr/textAppearanceMedium" />
+
+           </LinearLayout>
+    </LinearLayout> 
