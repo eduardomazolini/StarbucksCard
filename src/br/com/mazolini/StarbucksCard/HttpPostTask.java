@@ -80,26 +80,33 @@ public class HttpPostTask extends AsyncTask<URI, Integer, String> {
 
 	protected void onPostExecute(String result) {
 		super.onPostExecute(result);
+		String saldo;
+		String date;
 		ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
 		progressBar.setVisibility(View.GONE);
 		if (result!=null){
 			try {
-				Integer saldoInicio = result.indexOf("fetch_balance_value")+"fetch_balance_value".length()+2;
-				Integer saldoFim = result.indexOf("<",saldoInicio);
-				String saldo = result.substring(saldoInicio, saldoFim);
+				final Integer saldoInicio = result.indexOf("fetch_balance_value")+"fetch_balance_value".length()+2;
+				final Integer saldoFim = result.indexOf("<",saldoInicio);
+				saldo = result.substring(saldoInicio, saldoFim);
 				Log.d("","Index of fetch_balance_value: "+ saldo);
-				Integer dateInicio = result.indexOf("date")+"date".length()+2;
-				Integer dateFim = result.indexOf("<",dateInicio);
-				String date = result.substring(dateInicio, dateFim);
+				final Integer dateInicio = result.indexOf("date")+"date".length()+2;
+				final Integer dateFim = result.indexOf("<",dateInicio);
+				date = result.substring(dateInicio, dateFim);
 				Log.d("","Index of date: "+ date);
-				TextView saldoView = (TextView) activity.findViewById(R.id.saldo);
+				final TextView saldoView = (TextView) activity.findViewById(R.id.saldo);
 				saldoView.setText(saldo);
 				saldoView.setVisibility(View.VISIBLE);
-				TextView saldoDataView = (TextView) activity.findViewById(R.id.saldoData);
+				final TextView saldoDataView = (TextView) activity.findViewById(R.id.saldoData);
 				saldoDataView.setText(date);
 				saldoDataView.setVisibility(View.VISIBLE);
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
+			} catch (StringIndexOutOfBoundsException e){
+				saldo = "Cartão ou Pin inválido";
+				date = "";
+				e.printStackTrace();
+				
 			}
 		}
 		
@@ -109,22 +116,22 @@ public class HttpPostTask extends AsyncTask<URI, Integer, String> {
 	
 	public HttpClient createHttpClient() {
 	     try {
-	         KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+	         final KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
 	         trustStore.load(null, null);
 
-	         SSLSocketFactory sf = new MySSLSocketFactory(trustStore);
+	         final SSLSocketFactory sf = new MySSLSocketFactory(trustStore);
 	         sf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
 
-	         HttpParams params = new BasicHttpParams();
+	         final HttpParams params = new BasicHttpParams();
 	         HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
 	         HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
-	         HttpProtocolParams.setUserAgent(params, "br.com.mazolini.StarbucksCard");
+	         HttpProtocolParams.setUserAgent(params, "br.com.mazolini.cafe");
 	         HttpProtocolParams.setUseExpectContinue(params, false);
 
-	         SchemeRegistry registry = new SchemeRegistry();
+	         final SchemeRegistry registry = new SchemeRegistry();
 	         registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
 	         registry.register(new Scheme("https", sf, 443));
-	         ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, registry);
+	         final ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, registry);
 
 	         return new DefaultHttpClient(ccm, params);
 	     } catch (Exception e) {
@@ -155,7 +162,7 @@ public class HttpPostTask extends AsyncTask<URI, Integer, String> {
 	protected void onPreExecute() {
 		// TODO Auto-generated method stub
 		super.onPreExecute();
-		ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
+		final ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
 		progressBar.setVisibility(View.VISIBLE);
 		
 	}
