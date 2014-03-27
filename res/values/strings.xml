@@ -2,11 +2,11 @@
 <resources>
 
     <string name="app_name">Starbucks Card</string>
-    <string name="cardNumber">Número do Cartão</string>
-    <string name="cardPin">Código de Segurança (PIN)</string>
-    <string name="submit">Verificar Saldo</string>
-    <string name="save">Salvar Informações</string>
-    <string name="title_activity_main">Saldo</string>
+    <string name="cardNumber">Card Number</string>
+    <string name="cardPin">Security Code(PIN)</string>
+    <string name="submit">Check balance</string>
+    <string name="save">Save information</string>
+    <string name="title_activity_main">Starbucks Card</string>
     <string name="action_settings">Settings</string>
 
 </resources>

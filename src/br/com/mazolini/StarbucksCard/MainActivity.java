@@ -1,4 +1,4 @@
-package br.com.mazolini.StarbucksCard;
+package br.com.mazolini.CafeCard;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -6,13 +6,15 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import android.os.Bundle;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.util.Log;
-
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -77,6 +79,8 @@ public class MainActivity extends Activity {
         HttpPostTask consulta = new HttpPostTask(this);
         consulta.listPost = nameValuePairs;
  		consulta.execute(URI.create("https://www.starbucks.com.br/card/guestbalance"));
+ 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE); //Dismiss keyboard
+ 		imm.hideSoftInputFromWindow(cardNumberView.getWindowToken(), 0);
 	}
 
 }
