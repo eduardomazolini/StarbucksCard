@@ -33,6 +33,8 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -94,16 +96,20 @@ public class HttpPostTask extends AsyncTask<URI, Integer, String> {
 				final Integer dateFim = result.indexOf("<",dateInicio);
 				date = result.substring(dateInicio, dateFim);
 				Log.d("","Index of date: "+ date);
+				
 				final TextView saldoView = (TextView) activity.findViewById(R.id.saldo);
 				saldoView.setText(saldo);
 				saldoView.setVisibility(View.VISIBLE);
+				saldoView.startAnimation(AnimationUtils.loadAnimation(activity, R.animator.slide_right));
+				
 				final TextView saldoDataView = (TextView) activity.findViewById(R.id.saldoData);
 				saldoDataView.setText(date);
 				saldoDataView.setVisibility(View.VISIBLE);
+				saldoDataView.startAnimation(AnimationUtils.loadAnimation(activity, R.animator.slide_left));
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (StringIndexOutOfBoundsException e){
-				saldo = "Cartão ou Pin inválido";
+				saldo = "Cart��o ou Pin inv��lido";
 				date = "";
 				e.printStackTrace();
 				

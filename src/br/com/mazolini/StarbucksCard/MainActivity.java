@@ -1,4 +1,4 @@
-package br.com.mazolini.CafeCard;
+package br.com.mazolini.StarbucksCard;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -14,8 +14,14 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -52,6 +58,22 @@ public class MainActivity extends Activity {
 		cardPinView.setText(cardPin);
 		saveView.setChecked(save);
 		
+		
+		//Animacao de entrade
+		Animation slideDown = AnimationUtils.loadAnimation(this, R.animator.slide_down);
+		LinearLayout fundoVerde = (LinearLayout) findViewById(R.id.bgVerde);
+		fundoVerde.startAnimation(slideDown);
+		ImageView imgLogo = (ImageView) findViewById(R.id.imgLogo);
+		imgLogo.startAnimation(slideDown);
+		
+		Animation fadeIn = new AlphaAnimation(0, 1);
+		fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+		fadeIn.setDuration(3000);
+		LinearLayout content = (LinearLayout) findViewById(R.id.layoutContent);
+		content.setAnimation(fadeIn);
+		
+		
+		
 	}
 
 	
@@ -68,6 +90,13 @@ public class MainActivity extends Activity {
 		cardNumber = cardNumberView.getText().toString();
 		cardPin = cardPinView.getText().toString();
 		save = saveView.isChecked();
+		
+		//Limpa o resultado
+		TextView saldoView = (TextView)findViewById(R.id.saldo);
+		saldoView.setVisibility(View.GONE);
+		TextView saldoDataView = (TextView)findViewById(R.id.saldoData);
+		saldoDataView.setVisibility(View.GONE);
+		
 		
 		if (save){
 			cardPrefEditor.putString("cardNumber", cardNumber).putString("cardPin", cardPin).putBoolean("save", save).commit();
