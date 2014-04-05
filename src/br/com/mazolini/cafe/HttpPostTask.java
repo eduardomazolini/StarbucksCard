@@ -1,4 +1,4 @@
-package br.com.mazolini.StarbucksCard;
+package br.com.mazolini.cafe;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,11 +29,12 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
 
+import br.com.mazolini.cafe.R;
+
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -109,7 +110,7 @@ public class HttpPostTask extends AsyncTask<URI, Integer, String> {
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (StringIndexOutOfBoundsException e){
-				saldo = "Cart��o ou Pin inv��lido";
+				saldo = "Cart??????o ou Pin inv??????lido";
 				date = "";
 				e.printStackTrace();
 				

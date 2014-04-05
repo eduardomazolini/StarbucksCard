@@ -1,4 +1,4 @@
-package br.com.mazolini.StarbucksCard;
+package br.com.mazolini.cafe;
 
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import java.io.IOException;

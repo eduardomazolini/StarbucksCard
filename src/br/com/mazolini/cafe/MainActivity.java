@@ -1,4 +1,4 @@
-package br.com.mazolini.StarbucksCard;
+package br.com.mazolini.cafe;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+
+import br.com.mazolini.cafe.R;
 
 import android.app.Activity;
 import android.content.Context;
