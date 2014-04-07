@@ -8,5 +8,7 @@
     <string name="save">Save information</string>
     <string name="title_activity_main">Starbucks Card</string>
     <string name="action_settings">Settings</string>
-
+	<string name="numberEmptyError">Please, input your card number</string>
+	<string name="pinEmptyError">Please, input your PIN number</string>
+    
 </resources>

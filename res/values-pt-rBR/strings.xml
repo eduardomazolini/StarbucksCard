@@ -8,5 +8,6 @@
     <string name="save">Salvar informações</string>
     <string name="title_activity_main">Starbucks Card</string>
     <string name="action_settings">Configurações</string>
-
+	<string name="numberEmptyError">Por favor, informe o número do seu cartão</string>
+	<string name="pinEmptyError">Por favor, informe o PIN do seu cartão</string>
 </resources>

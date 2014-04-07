@@ -8,7 +8,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import br.com.mazolini.cafe.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -25,6 +24,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -73,9 +73,7 @@ public class MainActivity extends Activity {
 		fadeIn.setDuration(3000);
 		LinearLayout content = (LinearLayout) findViewById(R.id.layoutContent);
 		content.setAnimation(fadeIn);
-		
-		
-		
+				
 	}
 
 	
@@ -88,10 +86,19 @@ public class MainActivity extends Activity {
 			cardPrefEditor.putString("cardNumber", cardNumber).putString("cardPin", cardPin).putBoolean("save", save).commit();
 		}
 	}
-	public void onSubmitClicked(View v){
+	public void onSubmitClicked(View v){		
 		cardNumber = cardNumberView.getText().toString();
 		cardPin = cardPinView.getText().toString();
 		save = saveView.isChecked();
+		
+		if(cardNumber.length()==0){
+			Toast.makeText(this, getResources().getString(R.string.numberEmptyError),Toast.LENGTH_LONG).show();
+			return;
+		}
+		if(cardPin.length()==0){
+			Toast.makeText(this, getResources().getString(R.string.pinEmptyError), Toast.LENGTH_LONG).show();
+			return;
+		}
 		
 		//Limpa o resultado
 		TextView saldoView = (TextView)findViewById(R.id.saldo);
