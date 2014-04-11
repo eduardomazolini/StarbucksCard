@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">Starbucks Card</string>
+    <string name="app_name">SaldoCard</string>
     <string name="cardNumber">Número do Cartão</string>
     <string name="cardPin">Código de segurança(PIN)</string>
     <string name="submit">Verificar Saldo</string>

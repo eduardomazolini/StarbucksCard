@@ -6,7 +6,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.security.KeyStore;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -28,8 +33,6 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
-
-import br.com.mazolini.cafe.R;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -95,7 +98,18 @@ public class HttpPostTask extends AsyncTask<URI, Integer, String> {
 				Log.d("","Index of fetch_balance_value: "+ saldo);
 				final Integer dateInicio = result.indexOf("date")+"date".length()+2;
 				final Integer dateFim = result.indexOf("<",dateInicio);
-				date = result.substring(dateInicio, dateFim);
+				date = result.substring(dateInicio, dateFim); 
+				DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH);
+				Calendar dateFormatada = Calendar.getInstance();
+				try {
+					dateFormatada.setTime(df.parse(date));
+					dateFormatada.add(Calendar.HOUR, 4);
+					date = df.format(dateFormatada.getTime());
+				} catch (ParseException e) {
+					date = "";
+					e.printStackTrace();
+				}  
+				
 				Log.d("","Index of date: "+ date);
 				
 				final TextView saldoView = (TextView) activity.findViewById(R.id.saldo);
@@ -148,9 +162,9 @@ public class HttpPostTask extends AsyncTask<URI, Integer, String> {
 	private String inputStreamToString(InputStream is) throws IOException {
 	    String line = "";
 	    StringBuilder total = new StringBuilder();
-	    
+
 	    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-	    while ((line = rd.readLine()) != null) { 
+	    while ((line = rd.readLine()) != null) {
 	    	if (line.contains("fetch_balance_value")) {
 	    		Log.d("inputStreamToStringinputStreamToString","line: "+line);
 		    	    total.append(line); 	    		

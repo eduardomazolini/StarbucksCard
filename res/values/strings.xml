@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Starbucks Card</string>
+    <string name="app_name">SaldoCard</string>
     <string name="cardNumber">Card Number</string>
     <string name="cardPin">Security Code(PIN)</string>
     <string name="submit">Check balance</string>

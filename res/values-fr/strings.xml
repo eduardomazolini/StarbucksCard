@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SaldoCard</string>
+    <string name="cardNumber">Numéro de la carte</string>
+    <string name="cardPin">Code de sécurité (PIN)</string>
+    <string name="submit">Vérifier le solde</string>
+    <string name="save">Enregistrer info</string>
+    <string name="title_activity_main">Starbucks Card</string>
+    <string name="action_settings">Paramètres</string>
+	<string name="numberEmptyError">S'il vous plaît entrer le numéro de carte</string>
+	<string name="pinEmptyError">S'il vous plaît entrer votre PIN sur votre carte</string>
+</resources>
