@@ -91,11 +91,11 @@ public class MainActivity extends Activity {
 		cardPin = cardPinView.getText().toString();
 		save = saveView.isChecked();
 		
-		if(cardNumber.length()==0){
+		if(cardNumber.length()<16){
 			Toast.makeText(this, getResources().getString(R.string.numberEmptyError),Toast.LENGTH_LONG).show();
 			return;
 		}
-		if(cardPin.length()==0){
+		if(cardPin.length()<6){
 			Toast.makeText(this, getResources().getString(R.string.pinEmptyError), Toast.LENGTH_LONG).show();
 			return;
 		}
